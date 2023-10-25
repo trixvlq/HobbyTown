@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}Игротека{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+{% endblock %}
+{% block content %}
+<div class="cards">
+    {% for day in days %}
+    <div class="card">
+        <div class="card-day">
+            <h2>{{ day|date:"l" }}</h2>
+            <span>{{ day|date:"d-m-Y" }}</span>
+        </div>
+        {% for event in events %}
+        {% if event.date_start|date:"d-m-Y" == day|date:"d-m-Y" %}
+        <div class="card-info">
+            <div class="cardtop">
+                <h3>{{ event.title }}</h3>
+                <span>{{ event.date_start|date:"H:i" }} - {{ event.date_finish|date:"H:i" }}</span>
+                <p>{{ event.address }}</p>
+            </div>
+            <div class="card-body">
+                <div class="left-card">
+                    <p>{{ event.description }}</p>
+                    <div class="games">
+                        {% for game in games %}
+                        {% if game.event == event %}
+                        <div class="game-info">
+                            <h3>{{ game.game.title }}</h3>
+                            <div class="seats">
+                                {% if game.players == 0%}
+                                <p>Места закончились</p>
+                                {% else %}
+                                {% load custom_filters %}
+                                {% for sit in game.current|custom_range %}
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;" title="Занято">
+                                                            chair_alt
+                                                        </span>
+                                {% endfor %}
+                                {% for sit in game.players|custom_range %}
+                                <span class="material-symbols-outlined">
+                                                                chair_alt
+                                                            </span>
+                                </a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <img src="{{ event.image }}">
+                <button class="openModalBtn" data-event-title="{{ event.title }}">Записаться</button>
+            </div>
+            {% for form in forms%}
+            {% if form.instance == event%}
+
+            <div class="modal" id="modal_{{ event.id }}">
+                <div class="modal-content">
+                    <div class="modal-top">
+                        <span class="close" data-event-modal="{{ event.id }}">&times;</span>
+                        <h2>Введите данные для записи на {{ event.title }}</h2>
+                    </div>
+
+                    <div class="modal-body">
+                        {% if form.games|empty_check%}
+                        <form method="post" action="{% url 'send_mail' event.slug %}">
+                            {% csrf_token %}
+                            {{ form.name }}
+                            {{ form.number }}
+                            <select id="choices" name="choices" multiple>
+                                {% for i in form.games %}
+                                {{ i }}
+                                {% endfor %}
+                            </select>
+                            {% if event.price != 0 %}
+                            <p>Цена:{{ event.price }}</p>
+                            {% endif %}
+                            <div class="modal-bottom">
+                                <button type="submit">Отправить</button>
+                            </div>
+                        </form>
+                        {% else %}
+                        <p>Свободных мест не осталось :P</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+            {% endfor%}
+        </div>
+
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+</main>
+{% endblock %}
