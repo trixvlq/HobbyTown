@@ -63,32 +63,38 @@
                 <div class="modal-content">
                     <div class="modal-top">
                         <span class="close" data-event-modal="{{ event.id }}">&times;</span>
-                        <h2>Введите данные для записи на {{ event.title }}</h2>
+                        <h2>Введите данные для записи на игротеку</h2>
                     </div>
 
                     <div class="modal-body">
-                        {% if form.games|empty_check%}
+                        {% if form.games|empty_check %}
                         <form method="post" action="{% url 'send_mail' event.slug %}">
                             {% csrf_token %}
+                            <h3>Имя</h3>
                             {{ form.name }}
+                            <h3>Номер телефона</h3>
                             {{ form.number }}
-                            <select id="choices" name="choices" multiple>
+                            <fieldset>
+                                <legend>Выберите игротеки</legend>
                                 {% for i in form.games %}
-                                {{ i }}
+                                <div>
+                                    <input type="checkbox" id="game1" name="games" >
+                                    <label for="game1">{{ i }}</label>
+                                </div>
                                 {% endfor %}
-                            </select>
+                            </fieldset>
                             {% if event.price != 0 %}
                             <p>Цена:{{ event.price }}</p>
                             {% endif %}
-                            <div class="modal-bottom">
-                                <button type="submit">Отправить</button>
-                            </div>
                         </form>
                         {% else %}
                         <p>Свободных мест не осталось :P</p>
                         {% endif %}
                     </div>
-
+                    <div class="modal-bottom">
+                        <button type="submit">Отправить</button>
+                    </div>
+                    
                 </div>
             </div>
             {% endif %}
