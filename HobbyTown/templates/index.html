@@ -22,43 +22,47 @@
                 <p>{{ event.address }}</p>
             </div>
             <div class="card-body">
-                <div class="left-card">
-                    <p>{{ event.description }}</p>
-                    <div class="games">
-                        {% for game in games %}
-                        {% if game.event == event %}
-                        <div class="game-info">
-                            <h3>{{ game.game.title }}</h3>
-                            <div class="seats">
-                                {% if game.players == 0%}
-                                <p>Места закончились</p>
-                                {% else %}
-                                {% load custom_filters %}
-                                {% for sit in game.current|custom_range %}
-                                <span class="material-symbols-outlined"
-                                      style="font-variation-settings: 'FILL' 1;" title="Занято">
-                                                            chair_alt
-                                                        </span>
-                                {% endfor %}
-                                {% for sit in game.players|custom_range %}
-                                <span class="material-symbols-outlined">
-                                                                chair_alt
-                                                            </span>
-                                </a>
-                                {% endfor %}
-                                {% endif %}
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
+                <div class="card-body-description">
+                    <img src="{{ event.image }}">
+                    <h4>{{ event.description }}</h4>
                 </div>
-                <img src="{{ event.image }}">
+                <div class="games">
+                    {% for game in games %}
+                    {% if game.event == event %}
+                    <div class="game-info">
+                        <h3>{{ game.game.title }}</h3>
+                        <div class="game-info-description">
+                            <img src="{{ event.image }}"> <!--Как пример взял одну и ту же фотку-->
+                            <p>описание</p>
+                        </div>
+                        <div class="seats">
+                            {% if game.players == 0%}
+                            <p>Места закончились</p>
+                            {% else %}
+                            {% load custom_filters %}
+                            {% for sit in game.current|custom_range %}
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                                title="Занято">
+                                chair_alt
+                            </span>
+                            {% endfor %}
+                            {% for sit in game.players|custom_range %}
+                            <span class="material-symbols-outlined">
+                                chair_alt
+                            </span>
+                            </a>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button>Записаться</button>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
                 <button class="openModalBtn" data-event-title="{{ event.title }}">Записаться</button>
             </div>
             {% for form in forms%}
             {% if form.instance == event%}
-
             <div class="modal" id="modal_{{ event.id }}">
                 <div class="modal-content">
                     <div class="modal-top">
@@ -76,13 +80,16 @@
                             {{ form.number }}
                             <fieldset>
                                 <legend>Выберите игротеки</legend>
-                                {% for i in form.games %}
+                                {% for game in form.games %}
                                 <div>
-                                    <input type="checkbox" id="game1" name="games" >
-                                    <label for="game1">{{ i }}</label>
+                                    <input type="checkbox" name="games" value="{{game|value}}">
+                                    {{ game }}
                                 </div>
                                 {% endfor %}
                             </fieldset>
+                            <div class="modal-bottom">
+                                <button type="submit">Отправить</button>
+                            </div>
                             {% if event.price != 0 %}
                             <p>Цена:{{ event.price }}</p>
                             {% endif %}
@@ -91,16 +98,12 @@
                         <p>Свободных мест не осталось :P</p>
                         {% endif %}
                     </div>
-                    <div class="modal-bottom">
-                        <button type="submit">Отправить</button>
-                    </div>
-                    
+
                 </div>
             </div>
             {% endif %}
             {% endfor%}
         </div>
-
         {% endif %}
         {% endfor %}
     </div>
