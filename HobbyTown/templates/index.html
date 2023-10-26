@@ -37,6 +37,7 @@
                                 {% for sit in game.current|custom_range %}
                                 <span class="material-symbols-outlined"
                                       style="font-variation-settings: 'FILL' 1;" title="Занято">
+
                                                             chair_alt
                                                         </span>
                                 {% endfor %}
@@ -76,13 +77,16 @@
                             {{ form.number }}
                             <fieldset>
                                 <legend>Выберите игротеки</legend>
-                                {% for i in form.games %}
+                                {% for game in form.games %}
                                 <div>
-                                    <input type="checkbox" id="game1" name="games" >
-                                    <label for="game1">{{ i }}</label>
+                                    <input type="checkbox" name="games" value = "{{game|value}}">
+                                    {{ game }}
                                 </div>
                                 {% endfor %}
                             </fieldset>
+                            <div class="modal-bottom">
+                                <button type="submit">Отправить</button>
+                            </div>
                             {% if event.price != 0 %}
                             <p>Цена:{{ event.price }}</p>
                             {% endif %}
@@ -91,10 +95,8 @@
                         <p>Свободных мест не осталось :P</p>
                         {% endif %}
                     </div>
-                    <div class="modal-bottom">
-                        <button type="submit">Отправить</button>
-                    </div>
-                    
+
+
                 </div>
             </div>
             {% endif %}
