@@ -156,7 +156,7 @@ button {
 
 .modal-content {
     background-color: whitesmoke;
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     width: 25%;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
@@ -205,6 +205,18 @@ select {
     outline: none;
 }
 
+.modal-body fieldset {
+    padding-bottom: 5px;
+}
+.modal-body fieldset input {
+    display: inline;
+    width: auto;
+}
+.modal-body fieldset option {
+    display: inline;
+}
+
+
 /* Style for multiple options (you can adjust the styles as needed) */
 select option {
     font-size: 16px;
@@ -229,6 +241,10 @@ select option:checked {
 @media screen and (max-width: 1024px) {
     main {
         padding: 2em 4%;
+    }
+
+    .modal-content {
+        width: 50%;
     }
 }
 
@@ -319,7 +335,7 @@ select option:checked {
     }
 
     .modal-content {
-        margin: 50% auto;
+        margin: 30% auto;
         width: 80%;
     }
     
