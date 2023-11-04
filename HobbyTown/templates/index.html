@@ -22,6 +22,7 @@
                 <p>{{ event.address }}</p>
             </div>
             <div class="card-body">
+<<<<<<< HEAD
                 <div class="card-body-description">
                     <img src="{{ event.image }}">
                     <h4>{{ event.description }}</h4>
@@ -58,6 +59,39 @@
                     </div>
                     {% endif %}
                     {% endfor %}
+=======
+                <div class="left-card">
+                    <p>{{ event.description }}</p>
+                    <div class="games">
+                        {% for game in games %}
+                        {% if game.event == event %}
+                        <div class="game-info">
+                            <h3>{{ game.game.title }}</h3>
+                            <div class="seats">
+                                {% if game.players == 0%}
+                                <p>Места закончились</p>
+                                {% else %}
+                                {% load custom_filters %}
+                                {% for sit in game.current|custom_range %}
+                                <span class="material-symbols-outlined"
+                                      style="font-variation-settings: 'FILL' 1;" title="Занято">
+
+                                                            chair_alt
+                                                        </span>
+                                {% endfor %}
+                                {% for sit in game.players|custom_range %}
+                                <span class="material-symbols-outlined">
+                                                                chair_alt
+                                                            </span>
+                                </a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+>>>>>>> 00c34c292042fed5a794c5b796377aa12ef65f94
                 </div>
                 <button class="openModalBtn" data-event-title="{{ event.title }}">Записаться</button>
             </div>
@@ -82,7 +116,11 @@
                                 <legend>Выберите игротеки</legend>
                                 {% for game in form.games %}
                                 <div>
+<<<<<<< HEAD
                                     <input type="checkbox" name="games" value="{{game|value}}">
+=======
+                                    <input type="checkbox" name="games" value = "{{game|value}}">
+>>>>>>> 00c34c292042fed5a794c5b796377aa12ef65f94
                                     {{ game }}
                                 </div>
                                 {% endfor %}
@@ -99,6 +137,10 @@
                         {% endif %}
                     </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 00c34c292042fed5a794c5b796377aa12ef65f94
                 </div>
             </div>
             {% endif %}
