@@ -195,6 +195,10 @@ button {
     outline: none;
 }
 
+.modal-bottom {
+    margin-bottom: 10px;
+}
+
 .close {
     color: #aaa;
     float: right;
@@ -209,30 +213,18 @@ button {
     cursor: pointer;
 }
 select {
-    padding: 5px;
+    padding: 6px 10px;
     width: 100%;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 2px;
     outline: none;
 }
-
-.modal-body fieldset {
-    padding-bottom: 5px;
-}
-.modal-body fieldset input {
-    display: inline;
-    width: auto;
-}
-.modal-body fieldset option {
-    display: inline;
-}
-
 
 /* Style for multiple options (you can adjust the styles as needed) */
 select option {
     font-size: 16px;
-    padding: 5px;
+    text-transform: capitalize;
 }
 
 /* Customize the appearance of the select arrow (if needed) */
@@ -241,9 +233,9 @@ select::-ms-expand {
 }
 
 /* Style when select is focused */
-select:focus {
-    border: 2px solid #FF5E22; /* Adjust the color as needed */
-}
+/* select:focus {
+    border: 2px solid #FF5E22;
+} */
 
 /* Style for the selected options */
 select option:checked {
@@ -257,7 +249,7 @@ select option:checked {
     }
 
     .modal-content {
-        width: 50%;
+        width: 40%;
     }
     
     .game-info .seats {
@@ -336,8 +328,8 @@ select option:checked {
     }
 
     .modal-content {
-        margin: 30% auto;
-        width: 80%;
+        margin: 20% auto;
+        width: 50%;
     }
     
     .modal-top h2, .modal-top span {
@@ -358,6 +350,12 @@ select option:checked {
         }
     }
 
+    @media screen and (max-width: 600px) {
+        .modal-content {
+            width: 60%;
+        }
+    }
+
     @media screen and (max-width: 500px) {
         .card-body .games {
             grid-template-columns: auto;
@@ -370,11 +368,29 @@ select option:checked {
         .game-info .seats {
             grid-template-columns: auto auto auto auto;
         }
+
+        .modal-content {
+            width: 70%;
+        }
     }
 
     @media screen and (max-width: 425px) {
         .card-body .games {
             justify-content: space-around;
+        }
+
+        .modal-content {
+            width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 370px) {
+        .modal-content {
+            width: auto;
+        }
+        
+        .modal-content input {
+            width: 90%;
         }
     }
 
