@@ -20,7 +20,7 @@ def send_mail(request, event_slug):
         event = Event.objects.get(slug=event_slug)
         name = request.POST.get('name')
         number = request.POST.get('number')
-        game_ids = request.POST.getlist('games')
+        game_ids = request.POST.getlist('choices')
         games = EventGame.objects.filter(id__in=game_ids)
         with transaction.atomic():
             for game in games:
