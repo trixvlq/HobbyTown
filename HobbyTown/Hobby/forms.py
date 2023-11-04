@@ -1,4 +1,3 @@
-from captcha.fields import CaptchaField
 from django import forms
 
 from .models import *
@@ -16,5 +15,6 @@ class EventSignForm(forms.ModelForm):
         model = EventSign
         fields = ["name", "number", "games", "game","event"]
         widgets = {
-            'name': forms.TextInput(attrs={"type": "text", "placeholder": "Введите свое имя"}),
+            'name': forms.TextInput(attrs = {"type": "text", "placeholder": "Введите свое имя"}),
+            'number': forms.TextInput(attrs = {"type": "number", "placeholder": "Введите номер телефона"}),
         }
