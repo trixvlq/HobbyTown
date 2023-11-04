@@ -25,12 +25,3 @@ def empty_check(games):
         return True
     else:
         return False
-@register.filter
-def value(value):
-    result = ''
-    for i in str(value)[15:]:
-        if i not in '1234567890':
-            break
-        else:
-            result+=i
-    return result

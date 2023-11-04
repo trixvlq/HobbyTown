@@ -10,10 +10,6 @@ p {
     font-weight: 500;
 }
 
-h1, h2, h3, h4, h5, h6, button {
-    text-transform: capitalize;
-}
-
 body {
     background-color: whitesmoke;
 }
@@ -48,11 +44,6 @@ header {
 
 main {
     padding: 2em 10%;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
 }
 
 .cards {
@@ -91,23 +82,25 @@ img {
     font-weight: 600;
 }
 
-.card-info .card-body .card-body-description {
-    display: grid;
-    grid-template-columns: 45% auto;
-    column-gap: 15px;
-    margin-bottom: 20px;
+.card-info .card-body img {
+    max-width: 100%;
+    height: auto;
 }
 
-.card-body .games {
+.card-info .card-body {
     display: grid;
-    grid-template-columns: 48% 48%;
+    grid-template-columns: 55% 40%;
     justify-content: space-between;
+}
+
+.card-info .card-body p {
+    margin-bottom: 20px;
 }
 
 .game-info {
     background-color: whitesmoke;
     margin-bottom: 10px;
-    padding: 7px 13px;
+    padding: 7px 8px;
 }
 
 .game-info span {
@@ -124,21 +117,10 @@ img {
     margin-bottom: 10px;
 }
 
-.game-info .seats {
+.game-info > :not(:first-child) {
     display: grid;
     grid-auto-flow: column;
     justify-content: space-evenly;
-}
-
-.game-info .game-info-description {
-    display: grid;
-    grid-template-columns: 45% 50%;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.game-info .game-info-description p {
-    text-transform: capitalize;
 }
 
 button {
@@ -155,6 +137,12 @@ button {
     cursor: pointer;
 }
 
+.right-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -168,7 +156,7 @@ button {
 
 .modal-content {
     background-color: whitesmoke;
-    margin: 10% auto;
+    margin: 15% auto;
     padding: 20px;
     width: 25%;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
@@ -195,10 +183,6 @@ button {
     outline: none;
 }
 
-.modal-bottom {
-    margin-bottom: 10px;
-}
-
 .close {
     color: #aaa;
     float: right;
@@ -213,18 +197,18 @@ button {
     cursor: pointer;
 }
 select {
-    padding: 6px 10px;
+    padding: 5px;
     width: 100%;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 2px;
+    border-radius: 5px;
     outline: none;
 }
 
 /* Style for multiple options (you can adjust the styles as needed) */
 select option {
     font-size: 16px;
-    text-transform: capitalize;
+    padding: 5px;
 }
 
 /* Customize the appearance of the select arrow (if needed) */
@@ -233,28 +217,18 @@ select::-ms-expand {
 }
 
 /* Style when select is focused */
-/* select:focus {
-    border: 2px solid #FF5E22;
-} */
+select:focus {
+    border: 2px solid #FF5E22; /* Adjust the color as needed */
+}
 
 /* Style for the selected options */
 select option:checked {
     background-color: #FF5E22; /* Background color for selected options */
     color: white; /* Text color for selected options */
 }
-
 @media screen and (max-width: 1024px) {
     main {
         padding: 2em 4%;
-    }
-
-    .modal-content {
-        width: 40%;
-    }
-    
-    .game-info .seats {
-        grid-auto-flow:dense;
-        grid-template-columns: auto auto auto auto;
     }
 }
 
@@ -309,6 +283,27 @@ select option:checked {
         text-align: end;
     }
 
+    .card-info .card-body {
+        grid-template-columns: 100%;
+        justify-content: space-around;
+    }
+    
+    .right-card {
+        grid-row: 1;
+    }
+
+    .left-card {
+        text-align: center;
+    }
+
+    .left-card p {
+        font-weight: 600;
+    }
+
+    .card-info .card-body img {
+        max-width: 70%;
+    }
+
     button {
         padding: 7px 40px;
     }
@@ -319,17 +314,13 @@ select option:checked {
         justify-content: space-between;
     }
 
-    .card-info .card-body .card-body-description {
-        grid-template-columns: 50% auto;
-    }
-
-    .game-info .seats {
+    .game-info > :not(:first-child) {
         grid-template-columns: auto auto auto auto;
     }
 
     .modal-content {
-        margin: 20% auto;
-        width: 50%;
+        margin: 50% auto;
+        width: 80%;
     }
     
     .modal-top h2, .modal-top span {
@@ -344,71 +335,16 @@ select option:checked {
         font-size: 15px;
     }
 
-    @media screen and (max-width: 650px) {
-        .game-info .seats {
-            grid-template-columns: auto auto auto;
-        }
-    }
-
-    @media screen and (max-width: 600px) {
-        .modal-content {
-            width: 60%;
-        }
-    }
-
-    @media screen and (max-width: 500px) {
-        .card-body .games {
-            grid-template-columns: auto;
-        }
-
-        .game-info .game-info-description {
-            grid-template-columns: 50% 45%;
-        }
-
-        .game-info .seats {
+    @media screen and (max-width: 430px) {
+        .game-info > :not(:first-child) {
             grid-template-columns: auto auto auto auto;
-        }
-
-        .modal-content {
-            width: 70%;
-        }
-    }
-
-    @media screen and (max-width: 425px) {
-        .card-body .games {
-            justify-content: space-around;
-        }
-
-        .modal-content {
-            width: 80%;
-        }
-    }
-
-    @media screen and (max-width: 370px) {
-        .modal-content {
-            width: auto;
-        }
-        
-        .modal-content input {
-            width: 90%;
+            grid-auto-flow: row;
         }
     }
 
     @media screen and (max-width: 320px) {
-        .card-body .games {
-            grid-template-columns: 100%;
-        }
-
-        .game-info .seats {
+        .game-info > :not(:first-child) {
             grid-template-columns: auto auto auto;
-        }
-
-        .game-info .game-info-description {
-            grid-template-columns: 45% 50%;
-        }
-
-        .game-info .game-info-description p {
-            font-size: 14px;
         }
     }
 }

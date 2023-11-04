@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Hobby',
     'django.contrib.humanize',
-    # 'captcha',
+    'captcha',
     "phonenumber_field",
     'rest_framework',
 ]
