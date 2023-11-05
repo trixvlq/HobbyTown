@@ -11,7 +11,7 @@ from rest_framework import generics
 
 
 class ShowAPIView(generics.ListAPIView):
-    queryset = EventSign.objects.all().order_by('time')
+    queryset = SpecialSign.objects.all().order_by('time')
     serializer_class = FormSerializer
 
 
@@ -29,7 +29,7 @@ def send_mail(request, event_slug):
                 if game.players == 0:
                     send_message(f"На игру {game} игротеки {game.event.title} места закончились!")
                 game.save()
-        event_sign = EventSign.objects.create(event=event, name=name, number=number)
+        event_sign = GameSignForm.objects.create(event=event, name=name, number=number)
         event_sign.games.set(games)
         games_selected = EventGame.objects.filter(id__in = game_ids)
         game_strings = [str(game) for game in games_selected]
@@ -53,7 +53,6 @@ def index(request):
     days = sorted(set(event.date_start.date() for event in events))
     forms = [EventSignForm(instance=event, games=games.filter(event=event)) for event in events]
     data = zip(events, forms)
-    print(days)
     context = {
         'events': events,
         "forms": forms,

@@ -4,7 +4,7 @@ from phonenumber_field.serializerfields import PhoneNumberField
 
 class FormSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EventSign
+        model = SpecialSign
         fields = (
             "event","name","number","game",
         )

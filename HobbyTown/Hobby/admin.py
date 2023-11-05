@@ -18,4 +18,5 @@ class GameAdmin(admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(EventGame)
-admin.site.register(EventSign)
+admin.site.register(SpecialSign)
+admin.site.register(RegularSign)

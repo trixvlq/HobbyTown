@@ -2,20 +2,25 @@ var modals = document.querySelectorAll(".modal");
 var buttons = document.querySelectorAll(".openModalBtn");
 var closeButtons = document.querySelectorAll(".close");
 
-buttons.forEach(function (btn, index) {
+buttons.forEach(function (btn) {
     btn.onclick = function () {
-        modals[index].style.display = "block";
+        var modalId = btn.getAttribute("data-modal-id");
+        var modal = document.querySelector("#modal_" + modalId);
+        if (modal) {
+            modal.style.display = "block";
+        }
     };
 });
 
-closeButtons.forEach(function (closeBtn, index) {
+closeButtons.forEach(function (closeBtn) {
     closeBtn.onclick = function () {
-        modals[index].style.display = "none";
+        var modal = closeBtn.parentElement; // Находим соответствующее модальное окно
+        modal.style.display = "none";
     };
 });
 
 window.onclick = function (event) {
-    modals.forEach(function (modal, index) {
+    modals.forEach(function (modal) {
         if (event.target == modal) {
             modal.style.display = "none";
         }

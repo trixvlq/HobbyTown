@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="card-body-description">
                     <img src="{{ event.image }}">
-                    <h4>{{ event.description }}</h4>
+                    <pre>{{ event.description|safe }}</pre>
                 </div>
                 <div class="games">
                     {% for game in games %}
@@ -32,8 +32,8 @@
                     <div class="game-info">
                         <h3>{{ game.game.title }}</h3>
                         <div class="game-info-description">
-                            <img src="{{ event.image }}"> <!--Как пример взял одну и ту же фотку-->
-                            <p>описание</p>
+                            <img src="{{ game.game.pic.url }}">
+                            <p>{{game.game.description|truncatechars:400}}</p>
                         </div>
                         <div class="seats">
                             {% if game.players == 0%}
@@ -42,7 +42,7 @@
                             {% load custom_filters %}
                             {% for sit in game.current|custom_range %}
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
-                                title="Занято">
+                                  title="Занято">
                                 chair_alt
                             </span>
                             {% endfor %}
@@ -54,12 +54,12 @@
                             {% endfor %}
                             {% endif %}
                         </div>
-                        <button>Записаться</button>
+                        <button class="openModalBtn" data-modal-id="{{ event.id }}">Записаться</button>
                     </div>
                     {% endif %}
                     {% endfor %}
                 </div>
-                <button class="openModalBtn" data-event-title="{{ event.title }}">Записаться</button>
+                <button class="openModalBtn" data-modal-id="{{ event.id }}">Записаться</button>
             </div>
             {% for form in forms%}
             {% if form.instance == event%}
