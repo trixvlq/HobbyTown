@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игротеки</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="images/icon.png">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            rel="stylesheet"/>
+</head>
+
+<header>
+    <div class="header_left">
+        <img src="{% static 'images/HobbyTownLogo.png' %}" alt="Логотип Хобби Таун">
+        <p>Настольные игры и подарки от компании "HobbyTown"</p>
+    </div>
+    <div class="header_right">
+        <p>+7 (700) 978-52-80</p>
+        <p>+7 (727) 978-52-80</p>
+    </div>
+</header>
+<body>
+<main>
+    <div class="cards">
+        {% for date in dates %}
+        <div class="card">
+            <div class="card-day">
+                <h2>{{date}}</h2>
+                <span>14.10.23</span>
+            </div>
+            {% for event in events %}
+            {% if event.date_start == date %}
+            <div class="card-info">
+                <div class="cardtop">
+                    <h3>{{ event.name }}</h3>
+                    <span>17:00 - 00:00</span>
+                    <p>Прокофьева, 230. HobbyTown Gameloft</p>
+                </div>
+                <div class="card-body">
+                    <div class="left-card">
+                        <img src="images/game-card-img.png">
+                    </div>
+                    <div class="right-card">
+                        <p>Вот и дожди, холода! Согреваться всем пора! Завтра собираемся вновь, чтобы отлично
+                            провести
+                            время за настольными играми!</p>
+                    </div>
+                </div>
+                <div class="games">
+                    <div class="game-info">
+                        <h3>Brass</h3>
+                        <div class="game-body">
+                            <img src="images/bocchi-the-rock.jpg" alt="game image" id="game-image">
+                            <div class="description">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia atque facilis
+                                    amet aperiam similique fugiat, omnis reiciendis vero velit earum dolorum animi
+                                    consectetur eos eius molestias rem error. Eaque, cum.</p>
+                                <div class="seats">
+                                        <span class="material-symbols-outlined">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined">
+                                            chair_alt
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Восходящее солнце</h3>
+                        <div class="game-body">
+                            <img src="images/bocchi-the-rock.jpg" alt="game image" id="game-image">
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eligendi
+                                    odit odio earum delectus ducimus nemo nostrum. Tempora obcaecati, dolores sed
+                                    cumque repellendus illum tenetur deserunt facere qui ipsam quam.</p>
+                                <div class="seats">
+                                        <span class="material-symbols-outlined"
+                                              style="font-variation-settings: 'FILL' 1;" title="Занято">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined"
+                                          style="font-variation-settings: 'FILL' 1;" title="Занято">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined"
+                                          style="font-variation-settings: 'FILL' 1;" title="Занято">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined">
+                                            chair_alt
+                                        </span>
+                                    <span class="material-symbols-outlined">
+                                            chair_alt
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="reg-for-game.html" class="reg-for-game">Записаться</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</main>
+</body>
+
+</html>
