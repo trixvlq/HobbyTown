@@ -11,6 +11,7 @@ def index(request):
     context = {
         'games': games,
         'events': events,
-        'news': news
+        'news': news,
+        'filters':True
     }
     return render(request, 'Service/index.html', context)

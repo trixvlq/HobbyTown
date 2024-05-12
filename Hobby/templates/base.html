@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин настольных игр</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- MADE Gentle font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MADE+Gentle">
+    <style>
+        body {
+          font-family: 'MADE Gentle', sans-serif;
+        }
+        .card {
+          transition: transform 0.3s;
+        }
+        .card:hover {
+          transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Магазин настольных игр</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Игры</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Игротеки</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        {% if filters %}
+        <div class="col-md-3">
+            {% block filters %}
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% if mega_content %}
+        <div class="col-md-9">
+            {% block mega_content %}
+            {% endblock %}
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% endif %}
+        <div class="col-md-3">
+            {% block sidebar %}
+            {% endblock %}
+            <div>
+    <h2 class="mb-4">Новости</h2>
+    <div class="card mb-3">
+        <div class="card-body">
+            {% for article in news %}
+            <h5 class="card-title">{{ article.title }}</h5>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    {% block pagination %}
+    {% endblock %}
+
+</div>
+<footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Links  -->
+    <section class="mt-5">
+        <div class="container text-center text-md-start">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-4 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Контакты
+                    </h6>
+                    <p><i class="fas fa-home me-3"></i> Нью-Йорк, США</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        info@example.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> +1 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Social media -->
+    <section class="p-4 bg-light border-top">
+        <div class="container text-center">
+            <!-- Social media icons -->
+            <a href="#" class="me-4 text-reset">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="me-4 text-reset">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="me-4 text-reset">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </section>
+    <!-- Social media -->
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

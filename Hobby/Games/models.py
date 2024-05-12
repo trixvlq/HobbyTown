@@ -60,6 +60,7 @@ class Game(models.Model):
 class GameReview(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, verbose_name='Игра')
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='Пользователь')
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     text = models.TextField(verbose_name='Текст отзыва')
     date = models.DateField(verbose_name='Дата отзыва')
 
@@ -67,15 +68,15 @@ class GameReview(models.Model):
         abstract = True
 
     def __str__(self):
-        return f'{self.user.name} -> {self.game.name}'
+        return f'{self.user.username} -> {self.game.name}'
 
 
 class UserReview(GameReview):
-    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)],
-                                         verbose_name='Рейтинг пользователя')
+    pass
 
 
 class Comment(MPTTModel, GameReview):
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)],blank=True, null=True, verbose_name='Рейтинг комментария')
     parent = TreeForeignKey('self', on_delete=models.CASCADE,
                             null=True, blank=True, related_name='children', verbose_name='Родительский комментарий')
 
