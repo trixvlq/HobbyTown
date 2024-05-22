@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1/dist/css/splide.min.css">
+    <title>HobbyTown</title>
+</head>
+
+<body>
+    <header>
+        <div class="on-header">
+            <div class="container">
+                <div class="geo-places">
+                    <div class="towns">
+                        <a href="#">
+                            <svg id="location_icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 1.5c-4.14 0-7.5 3.024-7.5 6.75 0 6 7.5 14.25 7.5 14.25s7.5-8.25 7.5-14.25c0-3.726-3.36-6.75-7.5-6.75ZM12 12a3 3 0 1 1 0-5.999A3 3 0 0 1 12 12Z">
+                                </path>
+                            </svg>
+                            Алматы
+                        </a>
+                    </div>
+                    <div class="shops">
+                        <a href="#">Магазины</a>
+                    </div>
+                </div>
+                <div class="phone-nums">
+                    <a href="tel:+">+7 (700) 978-52-80</a>
+                    <a href="tel:+">+7 (727) 978-52-80</a>
+                    <a href="#" title="About us">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 3c-4.969 0-9 4.031-9 9s4.031 9 9 9 9-4.031 9-9-4.031-9-9-9Zm.49 14.156h-1.417a.12.12 0 0 1-.12-.12V15.62a.12.12 0 0 1 .12-.12h1.416a.12.12 0 0 1 .12.12v1.416a.12.12 0 0 1-.12.12Zm.796-4.64c-.76.51-.864.977-.864 1.406v.515a.14.14 0 0 1-.14.141H11.25a.14.14 0 0 1-.14-.14v-.516c0-1.027.472-1.844 1.444-2.497.904-.606 1.415-.99 1.415-1.836 0-.574-.328-1.01-1.008-1.334-.16-.076-.515-.15-.953-.145-.55.007-.976.139-1.305.403-.62.499-.672 1.042-.672 1.05-.026.159-.039.32-.04.481a.14.14 0 0 1-.14.141h-.996a.14.14 0 0 1-.14-.126 2.892 2.892 0 0 1 .004-.563c.01-.114.084-1.14 1.16-2.006.56-.449 1.27-.682 2.11-.693.595-.007 1.155.094 1.534.273 1.135.54 1.758 1.435 1.758 2.52 0 1.585-1.06 2.297-1.995 2.926Z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <div class="container">
+                <a href="index.html">
+                    <img src="images/HobbyTownLogo.png" alt="Hobby Town Logo" id="site_logo" width="200px">
+                </a>
+                <div class="games">
+                    <a href="#">
+                        <h4>Игротеки</h4>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.125 12a3.375 3.375 0 1 0 0-6.75 3.375 3.375 0 0 0 0 6.75Z"></path>
+                            <path
+                                d="M10.969 13.875c-1.32-.67-2.777-.938-3.844-.938-2.09 0-6.375 1.282-6.375 3.844v1.969h7.031v-.753c0-.89.375-1.784 1.032-2.528.523-.595 1.256-1.146 2.156-1.594Z">
+                            </path>
+                            <path
+                                d="M15.938 13.5c-2.441 0-7.313 1.508-7.313 4.5v2.25H23.25V18c0-2.992-4.872-4.5-7.313-4.5Z">
+                            </path>
+                            <path d="M15.938 12a4.125 4.125 0 1 0 0-8.25 4.125 4.125 0 0 0 0 8.25Z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <!-- <div class="burger-menu">
+                    <svg id="menu_icon" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.75 7.5h16.5"></path>
+                        <path d="M3.75 12h16.5"></path>
+                        <path d="M3.75 16.5h16.5"></path>
+                    </svg>
+                    Каталог
+                </div> -->
+                <div class="search-bar">
+                    <form action="#">
+                        <input type="search" name="search" id="navBarSearch" placeholder="Поиск по магазину"
+                            autocomplete="off">
+                        <a id="search_button">
+                            <svg viewBox="0 0 24 24" id="search_icon" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m21.75 20.063-5.816-5.818a7.523 7.523 0 0 0 1.44-4.433c0-4.17-3.393-7.562-7.562-7.562-4.17 0-7.562 3.392-7.562 7.562s3.392 7.562 7.562 7.562a7.523 7.523 0 0 0 4.433-1.44l5.818 5.816 1.687-1.688ZM9.812 14.986a5.174 5.174 0 1 1-.002-10.35 5.174 5.174 0 0 1 0 10.349Z">
+                                </path>
+                            </svg>
+                        </a>
+                    </form>
+                </div>
+                <div class="user-block">
+                    <div class="profile">
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 12a5.25 5.25 0 1 0 0-10.499A5.25 5.25 0 0 0 12 12Zm0 1.5c-3.254 0-9.75 2.01-9.75 6v3h19.5v-3c0-3.99-6.496-6-9.75-6Z">
+                                </path>
+                            </svg>
+                            Профиль
+                        </a>
+                    </div>
+                    <div class="favorite">
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 21a1.5 1.5 0 0 1-.843-.261c-3.684-2.5-5.28-4.216-6.16-5.288-1.874-2.285-2.772-4.63-2.746-7.171C2.28 5.368 4.616 3 7.457 3c2.067 0 3.498 1.164 4.331 2.133a.281.281 0 0 0 .425 0C13.046 4.163 14.477 3 16.543 3c2.842 0 5.178 2.368 5.207 5.28.026 2.541-.873 4.887-2.747 7.172-.88 1.072-2.475 2.787-6.159 5.287a1.5 1.5 0 0 1-.843.261Z">
+                                </path>
+                            </svg>
+                            Избранное
+                        </a>
+                    </div>
+                    <div class="shopping-cart">
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.25 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                <path d="M18.75 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                                <path
+                                    d="M7.865 14.25h12.25l1.8-9H6.276L5.88 3H1.5v1.5h3.12l2.25 12.75h13.38v-1.5H8.13l-.265-1.5Z">
+                                </path>
+                            </svg>
+                            Корзина
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="catalog">
+            <div class="category">
+                <a href="#">Все игры</a>
+            </div>
+            <div class="category">
+                <a href="#">Дополнения</a>
+            </div>
+            <div class="category">
+                <a href="#">Для детей</a>
+            </div>
+            <div class="category">
+                <a href="#">Всей семьей</a>
+            </div>
+        </div>
+    </header>
+    <section id="image-carousel" class="splide" aria-label="Game slider">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <a href="#">
+                        <img src="images/slide1.png" alt="">
+                    </a>
+                </li>
+                <li class="splide__slide">
+                    <a href="#">
+                        <img src="images/slide2.png" alt="">
+                    </a>
+                </li>
+                <li class="splide__slide">
+                    <a href="#">
+                        <img src="images/slide3.png" alt="">
+                    </a>
+                </li>
+                <li class="splide__slide">
+                    <a href="#">
+                        <img src="images/slide4.jpeg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <main>
+        <div class="side-menu">
+            <div class="catalog option">
+                <div class="title">
+                    <a href="#">
+                        <h2>Каталог</h2>
+                    </a>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><a href="#">Игры для детей</a></li>
+                        <li><a href="#">Вселенная warhammer</a></li>
+                        <li><a href="#">игры для всей семьи</a></li>
+                        <li><a href="#">настольные ролевые игры</a></li>
+                        <li><a href="#">дуэльные игры и ККИ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="test2 option">
+                <div class="title">
+                    <a href="#">
+                        <h2>Title</h2>
+                    </a>
+                </div>
+                <div class="content">
+                    <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. At, cumque officia. Reiciendis
+                        doloribus voluptates, ad optio cumque animi porro, modi assumenda voluptate vel amet delectus,
+                        officia voluptas cum libero corrupti?</a>
+                </div>
+            </div>
+        </div class="side-menu">
+        <div class="container">
+            <div class="new-games">
+                <div class="title">
+                    <a href="#">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m9.75 24-2.455-6.545L.75 15l6.545-2.455L9.75 6l2.455 6.545L18.75 15l-6.545 2.455L9.75 24Z">
+                            </path>
+                            <path
+                                d="M4.125 8.25 3.02 5.23 0 4.125 3.02 3.02 4.125 0 5.23 3.02l3.02 1.105L5.23 5.23 4.125 8.25Z">
+                            </path>
+                            <path
+                                d="m18.75 12-1.458-3.792L13.5 6.75l3.792-1.458L18.75 1.5l1.458 3.792L24 6.75l-3.792 1.458L18.75 12Z">
+                            </path>
+                        </svg>
+                        <h2>Новинки</h2>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m9.75 24-2.455-6.545L.75 15l6.545-2.455L9.75 6l2.455 6.545L18.75 15l-6.545 2.455L9.75 24Z">
+                            </path>
+                            <path
+                                d="M4.125 8.25 3.02 5.23 0 4.125 3.02 3.02 4.125 0 5.23 3.02l3.02 1.105L5.23 5.23 4.125 8.25Z">
+                            </path>
+                            <path
+                                d="m18.75 12-1.458-3.792L13.5 6.75l3.792-1.458L18.75 1.5l1.458 3.792L24 6.75l-3.792 1.458L18.75 12Z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="images/card-img.png" alt="">
+                        </div>
+                        <div class="game-name">
+                            <a href="#">Robolx</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="images/card-img.png" alt="">
+                        </div>
+                        <div class="game-name">
+                            <a href="#">Robolx</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="images/code.png" alt="">
+                        </div>
+                        <div class="game-name">
+                            <a href="#">Robolx</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
